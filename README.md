@@ -3,6 +3,11 @@
 A simple React application using RxJS for data flow.
 
 
+# Preview of this branch:
+
+![](https://s3.amazonaws.com/f.cl.ly/items/2u3h0J3h1n2A0y3b1U45/Image%202015-04-25%20at%205.57.40%20PM.png)
+
+
 # Why?
 
 Because after using flux for almost a year, I really dislike it and loathe trying to teach it to others. Seriously, I hate trying to explain how flux/Dispatcher and EventEmitter work each time.
