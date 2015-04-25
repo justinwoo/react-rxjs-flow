@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack -wdc --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justinwoo/react-rxjs-flow.git"
   },
   "author": "Justin Woo",
   "devDependencies": {
