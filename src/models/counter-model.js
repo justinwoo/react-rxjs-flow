@@ -1,8 +1,8 @@
 var Rx = require('rx');
 var update = require('react/lib/update');
 
-var Keys = require('./keys');
-var Intent = require('./intent');
+var CounterKeys = require('../keys/counter-keys');
+var CounterIntent = require('../intents/counter-intent');
 
 var subject = new Rx.ReplaySubject(1);
 
@@ -19,9 +19,9 @@ function incrementCounter() {
   subject.onNext(state);
 }
 
-Intent.subject.subscribe(function (payload) {
+CounterIntent.subject.subscribe(function (payload) {
   switch(payload.key) {
-    case Keys.INCREMENT_COUNTER:
+    case CounterKeys.INCREMENT_COUNTER:
       incrementCounter();
       break;
     default:
