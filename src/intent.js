@@ -11,5 +11,11 @@ module.exports = {
     intentSubject.onNext({
       key: Keys.INCREMENT_COUNTER
     });
+  },
+
+  changeFilter: function () {
+    intentSubject.onNext({
+      key: Keys.CHANGE_FILTER
+    });
   }
 };

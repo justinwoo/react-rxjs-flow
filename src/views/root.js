@@ -9,7 +9,11 @@ class Root extends React.Component {
 
     this.handleIncrement = function () {
       Intent.incrementCounter();
-    }
+    };
+
+    this.handleChange = function () {
+      Intent.changeFilter();
+    };
   }
 
   render() {
@@ -18,7 +22,9 @@ class Root extends React.Component {
       <div>
         <h1>Hello</h1>
         <p>counter: {this.props.counter}</p>
+        <p>list: {this.props.filteredList}</p>
         <button onClick={this.handleIncrement}>increment</button>
+        <button onClick={this.handleChange}>change filter</button>
       </div>
     );
   }
