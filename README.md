@@ -1,6 +1,10 @@
 # react-rxjs-flow
 
-A simple React application using RxJS for data flow.
+A simple React application using RxJS for data flow. See the Qiita post about this here: http://qiita.com/kimagure/items/22cf4bb2a967fcba376e
+
+* Master: https://github.com/justinwoo/react-rxjs-flow
+* Multiple models: https://github.com/justinwoo/react-rxjs-flow/tree/multiple-models-intents
+* Transform: https://github.com/justinwoo/react-rxjs-flow/tree/subject-transform
 
 
 # Why?
