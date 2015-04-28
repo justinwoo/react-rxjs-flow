@@ -5,6 +5,7 @@ A simple React application using RxJS for data flow. See the Qiita post about th
 * Master: https://github.com/justinwoo/react-rxjs-flow
 * Multiple models: https://github.com/justinwoo/react-rxjs-flow/tree/multiple-models-intents
 * Transform: https://github.com/justinwoo/react-rxjs-flow/tree/subject-transform
+* Separate Subjects per intent: https://github.com/justinwoo/react-rxjs-flow/tree/each-intent-subject
 
 
 # Why?
