@@ -1,15 +1,13 @@
 var Rx = require('rx');
 
-var Keys = require('./keys');
-
-var intentSubject = new Rx.ReplaySubject(1);
+var subjects = {
+  incrementCounterSubject: new Rx.Subject()
+};
 
 module.exports = {
-  subject: intentSubject,
+  subjects: subjects,
 
   incrementCounter: function () {
-    intentSubject.onNext({
-      key: Keys.INCREMENT_COUNTER
-    });
+    subjects.incrementCounterSubject.onNext();
   }
 };
