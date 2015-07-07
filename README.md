@@ -1,4 +1,4 @@
-# dyanmic width scroll table
+# dynamic width scroll table
 
 This branch is based off of https://github.com/justinwoo/cycle-scroll-table/ and uses architecture that Andre helped make in that branch using Cycle.js.
 
