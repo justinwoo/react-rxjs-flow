@@ -6,6 +6,7 @@ A simple React application using RxJS for data flow. See the Qiita post about th
 * Multiple models: https://github.com/justinwoo/react-rxjs-flow/tree/multiple-models-intents
 * Transform: https://github.com/justinwoo/react-rxjs-flow/tree/subject-transform
 * Separate Subjects per intent: https://github.com/justinwoo/react-rxjs-flow/tree/each-intent-subject
+* Dynamic width scroll table based off of Cycle.js application structure: https://github.com/justinwoo/react-rxjs-flow/tree/dynamic-width-scroll-table
 
 
 # Why?
