@@ -15,7 +15,8 @@ let Root = React.createClass({
       rowCount,
       visibleIndices,
       columnWidths,
-      rows
+      rows,
+      columnSort
     } = this.props;
 
     let staticHeaderTableStyle = {
@@ -36,7 +37,7 @@ let Root = React.createClass({
         <div className="static-header-table-container">
           <table
             className="static-header-table" style={staticHeaderTableStyle}>
-            <THead {...{columns, columnWidths}}/>
+            <THead {...{columns, columnWidths, columnSort}}/>
           </table>
         </div>
         <div ref="ScrollTableContainer" className="scroll-table-container" style={scrollTableContainerStyle}

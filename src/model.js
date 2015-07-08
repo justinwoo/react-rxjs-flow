@@ -2,16 +2,28 @@ import Rx from 'rx';
 
 import makeVisibleIndices$ from './models/make-visible-indices';
 import makeColumnWidths$ from './models/make-column-widths';
+import makeSortedRows$ from './models/make-sorted-rows';
+
+let defaultTableData = {
+  columns: [],
+  defaultColumnWidths: [],
+  rows: []
+};
+
+let defaultColumnSort = {
+  column: null,
+  sortDirection: null
+};
 
 function model(actions) {
-  let tableData$ = actions.tableData$.startWith({
-    columns: [],
-    defaultColumnWidths: [],
-    rows: []
-  });
+  let columnSort$ = actions.columnSort$.startWith(defaultColumnSort);
+
+  let tableData$ = actions.tableData$.startWith(defaultTableData);
   let columns$ = tableData$.map(data => data.columns);
   let defaultColumnWidths$ = tableData$.map(data => data.defaultColumnWidths);
-  let rows$ = tableData$.map(data => data.rows);
+  let rawRows$ = tableData$.map(data => data.rows);
+
+  let rows$ = makeSortedRows$(rawRows$, columnSort$);
   let rowCount$ = rows$.map(rows => rows.length);
 
   let tableHeight$ = Rx.Observable.just(500);
@@ -36,6 +48,7 @@ function model(actions) {
     visibleIndices$,
     columnWidths$,
     rows$,
+    columnSort$,
     (
       tableHeight,
       rowHeight,
@@ -43,7 +56,8 @@ function model(actions) {
       rowCount,
       visibleIndices,
       columnWidths,
-      rows
+      rows,
+      columnSort
     ) => ({
       tableHeight,
       rowHeight,
@@ -51,7 +65,8 @@ function model(actions) {
       rowCount,
       visibleIndices,
       columnWidths,
-      rows
+      rows,
+      columnSort
     })
   );
 }
