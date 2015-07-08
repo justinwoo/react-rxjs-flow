@@ -56,3 +56,4 @@ let columnSort$ = actions.columnSort$.startWith(defaultColumnSort);
     defaultColumnWidths$,
     containerWidth$
   );
+```
