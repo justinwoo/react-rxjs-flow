@@ -15,3 +15,22 @@ function main() {
 let target = document.getElementById('app');
 
 main().subscribe(Output => React.render(Output, target));
+
+// load up fixture data
+let fixtureData = {
+  columns: ['ID (fixed width)', 'ID * 10', 'Random Number'],
+  defaultColumnWidths: [300, null, null],
+  rows: []
+};
+
+for (let i = 0; i < 10000; i++) {
+  fixtureData.rows.push([
+    i,
+    i * 10,
+    Math.floor(Math.random() * 10000)
+  ]);
+}
+
+import {tableData$} from './intents/table-data';
+
+tableData$.onNext(fixtureData);

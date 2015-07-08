@@ -3,17 +3,32 @@ import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
 
 import Row from './row';
 
-var TBody = React.createClass({
+let TBody = React.createClass({
   mixins: [PureRenderMixin],
 
   render: function () {
     let {
       rowHeight,
       visibleIndices,
-      columnWidths
+      columnWidths,
+      rows
     } = this.props;
 
-    let nodes = visibleIndices.map((index, i) => <Row key={i} {...{index, rowHeight, columnWidths}}/>);
+    let nodes = visibleIndices.map((index, i) => {
+      let rowProps = {
+        index,
+        rowHeight,
+        columnWidths,
+        row: rows[index]
+      };
+      let renderKey = index % visibleIndices.length;
+      return (
+        <Row
+          key={renderKey}
+          {...rowProps}
+        />
+      );
+    });
 
     return (
       <tbody>

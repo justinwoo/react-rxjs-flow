@@ -4,7 +4,7 @@ function makeColumnWidths$(defaultColumnWidths$, containerWidth$) {
   return Rx.Observable.combineLatest(
     defaultColumnWidths$, containerWidth$,
     (defaultColumnWidths, containerWidth) => {
-      var computation = defaultColumnWidths.reduce(function (agg, width) {
+      let computation = defaultColumnWidths.reduce(function (agg, width) {
         if (typeof width === 'number') {
           agg.remainingWidth -= width;
           agg.autoSizeColumns -= 1;
@@ -15,7 +15,7 @@ function makeColumnWidths$(defaultColumnWidths$, containerWidth$) {
         remainingWidth: containerWidth
       });
 
-      var standardWidth = computation.remainingWidth / computation.autoSizeColumns;
+      let standardWidth = computation.remainingWidth / computation.autoSizeColumns;
 
       return defaultColumnWidths.map(function (width) {
         if (width) {

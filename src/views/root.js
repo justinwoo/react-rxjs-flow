@@ -6,7 +6,7 @@ import {setContainerWidth} from '../intents/container-resize';
 import THead from './thead';
 import TBody from './tbody';
 
-var Root = React.createClass({
+let Root = React.createClass({
   render: function () {
     let {
       tableHeight,
@@ -14,7 +14,8 @@ var Root = React.createClass({
       columns,
       rowCount,
       visibleIndices,
-      columnWidths
+      columnWidths,
+      rows
     } = this.props;
 
     let staticHeaderTableStyle = {
@@ -41,7 +42,7 @@ var Root = React.createClass({
         <div ref="ScrollTableContainer" className="scroll-table-container" style={scrollTableContainerStyle}
           onScroll={handleOnScroll}>
           <table className="scroll-table" style={{height: rowCount * rowHeight + 'px'}}>
-            <TBody {...{rowHeight, visibleIndices, columnWidths}}/>
+            <TBody {...{rowHeight, visibleIndices, columnWidths, rows}}/>
           </table>
         </div>
       </div>

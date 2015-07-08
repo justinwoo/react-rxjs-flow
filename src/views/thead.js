@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
 
-var THead = React.createClass({
+let THead = React.createClass({
   mixins: [PureRenderMixin],
 
   render: function () {
