@@ -2,11 +2,16 @@
 
 A simple React application using RxJS for data flow. See the Qiita post about this here: http://qiita.com/kimagure/items/22cf4bb2a967fcba376e
 
+I posted a "follow up article" recently: http://qiita.com/kimagure/items/d29ed7b7bdaaf6977b9a.
+
+While it uses Cycle.js, the architecture is a better structured version of my naive "flux in RxJS" example, and is what powers the dynamic-width-scroll-table and dynamic-width-filtering-sorting-scroll-table-with-data-loading. See branches below:
+
 * Master: https://github.com/justinwoo/react-rxjs-flow
 * Multiple models: https://github.com/justinwoo/react-rxjs-flow/tree/multiple-models-intents
 * Transform: https://github.com/justinwoo/react-rxjs-flow/tree/subject-transform
 * Separate Subjects per intent: https://github.com/justinwoo/react-rxjs-flow/tree/each-intent-subject
 * Dynamic width scroll table based off of Cycle.js application structure: https://github.com/justinwoo/react-rxjs-flow/tree/dynamic-width-scroll-table
+* Another branch of the above branch with even more stuff: https://github.com/justinwoo/react-rxjs-flow/tree/dynamic-width-filtering-sorting-scroll-table-with-data-loading
 
 
 # Why?
