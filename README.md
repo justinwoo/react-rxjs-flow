@@ -28,14 +28,19 @@ Compare:
 let columnSort$ = actions.columnSort$.startWith(defaultColumnSort);
   let filterEvenRows$ = actions.filterEvenRows$.startWith(false);
 
-  let tableData$ = actions.tableData$.startWith(defaultTableData); // we actually load data in
+  // we actually load data in
+  let tableData$ = actions.tableData$.startWith(defaultTableData);
   let columns$ = tableData$.map(data => data.columns);
   let defaultColumnWidths$ = tableData$.map(data => data.defaultColumnWidths);
-  let rawRows$ = tableData$.map(data => data.rows); // the row data is mapped from the table data stream
+  // the row data is mapped from the table data stream
+  let rawRows$ = tableData$.map(data => data.rows);
+  
+  // we sort the rows with information about how we are sorting columns
+  let sortedRows$ = makeSortedRows$(rawRows$, columnSort$);
 
-  let sortedRows$ = makeSortedRows$(rawRows$, columnSort$); // we sort the rows with information about how we are sorting columns
-
-  let rows$ = makeFilteredRows$(sortedRows$, filterEvenRows$); // then we take that to filter the rows by criteria, in case, whether or not we are filtering even-numbered ids
+  // then we take that to filter the rows by criteria
+  // in this case, whether or not we are filtering even-numbered ids
+  let rows$ = makeFilteredRows$(sortedRows$, filterEvenRows$);
   let rowCount$ = rows$.map(rows => rows.length);
 
   let tableHeight$ = Rx.Observable.just(500);
