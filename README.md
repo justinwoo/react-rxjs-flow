@@ -4,7 +4,7 @@ A simple React application using RxJS for data flow. See the Qiita post about th
 
 I posted a "follow up article" recently: http://qiita.com/kimagure/items/d29ed7b7bdaaf6977b9a.
 
-While it uses Cycle.js, the architecture is a better structured version of my naive "flux in RxJS" example, and is what powers the dynamic-width-scroll-table and dynamic-width-filtering-sorting-scroll-table-with-data-loading. See branches below:
+While it uses Cycle.js, the architecture is a better structured version of my naive "flux in RxJS" example, and in turn, that architecture is what powers the react views in the dynamic-width-scroll-table and dynamic-width-filtering-sorting-scroll-table-with-data-loading branches. See branches below:
 
 * Master: https://github.com/justinwoo/react-rxjs-flow
 * Multiple models: https://github.com/justinwoo/react-rxjs-flow/tree/multiple-models-intents
