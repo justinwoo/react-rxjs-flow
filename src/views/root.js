@@ -5,6 +5,7 @@ import {setContainerWidth} from '../intents/container-resize';
 
 import THead from './thead';
 import TBody from './tbody';
+import FilterControls from './filter-controls';
 
 let Root = React.createClass({
   render: function () {
@@ -16,7 +17,8 @@ let Root = React.createClass({
       visibleIndices,
       columnWidths,
       rows,
-      columnSort
+      columnSort,
+      filterEvenRows
     } = this.props;
 
     let staticHeaderTableStyle = {
@@ -34,6 +36,7 @@ let Root = React.createClass({
 
     return (
       <div id="app-container">
+        <FilterControls {...{filterEvenRows}}/>
         <div className="static-header-table-container">
           <table
             className="static-header-table" style={staticHeaderTableStyle}>

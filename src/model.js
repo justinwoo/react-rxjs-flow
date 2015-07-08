@@ -3,6 +3,7 @@ import Rx from 'rx';
 import makeVisibleIndices$ from './models/make-visible-indices';
 import makeColumnWidths$ from './models/make-column-widths';
 import makeSortedRows$ from './models/make-sorted-rows';
+import makeFilteredRows$ from './models/make-filtered-rows';
 
 let defaultTableData = {
   columns: [],
@@ -17,13 +18,16 @@ let defaultColumnSort = {
 
 function model(actions) {
   let columnSort$ = actions.columnSort$.startWith(defaultColumnSort);
+  let filterEvenRows$ = actions.filterEvenRows$.startWith(false);
 
   let tableData$ = actions.tableData$.startWith(defaultTableData);
   let columns$ = tableData$.map(data => data.columns);
   let defaultColumnWidths$ = tableData$.map(data => data.defaultColumnWidths);
   let rawRows$ = tableData$.map(data => data.rows);
 
-  let rows$ = makeSortedRows$(rawRows$, columnSort$);
+  let sortedRows$ = makeSortedRows$(rawRows$, columnSort$);
+
+  let rows$ = makeFilteredRows$(sortedRows$, filterEvenRows$);
   let rowCount$ = rows$.map(rows => rows.length);
 
   let tableHeight$ = Rx.Observable.just(500);
@@ -49,6 +53,7 @@ function model(actions) {
     columnWidths$,
     rows$,
     columnSort$,
+    filterEvenRows$,
     (
       tableHeight,
       rowHeight,
@@ -57,7 +62,8 @@ function model(actions) {
       visibleIndices,
       columnWidths,
       rows,
-      columnSort
+      columnSort,
+      filterEvenRows
     ) => ({
       tableHeight,
       rowHeight,
@@ -66,7 +72,8 @@ function model(actions) {
       visibleIndices,
       columnWidths,
       rows,
-      columnSort
+      columnSort,
+      filterEvenRows
     })
   );
 }
