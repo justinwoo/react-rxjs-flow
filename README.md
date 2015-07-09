@@ -2,17 +2,16 @@
 
 This branch is in turn based off of https://github.com/justinwoo/react-rxjs-flow/tree/dynamic-width-scroll-table, and has more featuers and still ends up combining the multiple features together by combining relevant streams.
 
-Compare:
+## Before
 
-```
-// before:
-  let columns$ = Rx.Observable.just(['ID (fixed width)', 'ID * 10', 'Random Number']);
+```js
+  let columns$             = Rx.Observable.just(['ID (fixed width)', 'ID * 10', 'Random Number']);
   let defaultColumnWidths$ = Rx.Observable.just([300, null, null]);
 
   let tableHeight$ = Rx.Observable.just(500);
-  let rowHeight$ = Rx.Observable.just(30);
-  let rowCount$ = Rx.Observable.just(10000);
-  let scrollTop$ = actions.scrollTop$.startWith(0);
+  let rowHeight$   = Rx.Observable.just(30);
+  let rowCount$    = Rx.Observable.just(10000);
+  let scrollTop$   = actions.scrollTop$.startWith(0);
 
   let visibleIndices$ = makeVisibleIndices$(
     tableHeight$, rowHeight$, rowCount$, scrollTop$
@@ -23,29 +22,32 @@ Compare:
     defaultColumnWidths$,
     containerWidth$
   );
-  
-// after:
-let columnSort$ = actions.columnSort$.startWith(defaultColumnSort);
+```
+
+## After
+```js
+  let columnSort$     = actions.columnSort$.startWith(defaultColumnSort);
   let filterEvenRows$ = actions.filterEvenRows$.startWith(false);
 
-  // we actually load data in
-  let tableData$ = actions.tableData$.startWith(defaultTableData);
-  let columns$ = tableData$.map(data => data.columns);
+  // Actually load data in
+  let tableData$           = actions.tableData$.startWith(defaultTableData);
+  let columns$             = tableData$.map(data => data.columns);
   let defaultColumnWidths$ = tableData$.map(data => data.defaultColumnWidths);
-  // the row data is mapped from the table data stream
+
+  // Row data is mapped from the table data stream
   let rawRows$ = tableData$.map(data => data.rows);
-  
-  // we sort the rows with information about how we are sorting columns
+
+  // Sort rows with information about how columns are sorted
   let sortedRows$ = makeSortedRows$(rawRows$, columnSort$);
 
-  // then we take that to filter the rows by criteria
-  // in this case, whether or not we are filtering even-numbered ids
-  let rows$ = makeFilteredRows$(sortedRows$, filterEvenRows$);
+  // Then we take that to filter the rows by criteria
+  // In this case whether filtering by even-numbered ids or not
+  let rows$     = makeFilteredRows$(sortedRows$, filterEvenRows$);
   let rowCount$ = rows$.map(rows => rows.length);
 
   let tableHeight$ = Rx.Observable.just(500);
-  let rowHeight$ = Rx.Observable.just(30);
-  let scrollTop$ = actions.scrollTop$.startWith(0);
+  let rowHeight$   = Rx.Observable.just(30);
+  let scrollTop$   = actions.scrollTop$.startWith(0);
 
   let visibleIndices$ = makeVisibleIndices$(
     tableHeight$, rowHeight$, rowCount$, scrollTop$
